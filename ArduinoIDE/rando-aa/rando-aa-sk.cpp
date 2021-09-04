@@ -1,4 +1,5 @@
 #define DATESTAMP "Sat Sep  4 19:49:32 UTC 2021"
+#include <Arduino.h>
 
 const String p_project = "Magic 8 Ball";
 const uint8_t version_hi = 0;
