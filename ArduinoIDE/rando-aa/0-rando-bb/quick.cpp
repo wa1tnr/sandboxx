@@ -107,10 +107,10 @@ void runword (void) {
 
 bool pin_state; // is this really a bool or just an int that is equal to zero, or to one
 
-int wasted;
+// int wasted;
 
 void cpl (int pin) {
-    wasted = pin;
+    // wasted = pin;
     pin_state = digitalRead (LED_BUILTIN);
     pin_state = !pin_state; // how does this interface to typing as bool or as int
     digitalWrite (LED_BUILTIN, pin_state);
@@ -142,7 +142,8 @@ void init_serial (void) {
     }
 }
 
-int BASE;
+// int BASE;
+/*
 void unused_setup (void) {
     init_gpio ();
     init_serial ();
@@ -151,12 +152,13 @@ void unused_setup (void) {
     Serial.println (DATESTAMP);
     Serial.print ("__LED_BUILTIN__ ");
     Serial.println (wasted); // temporary - delete me soon
-    BASE = -99;
+ // BASE = -99;
 }
+*/
 
 void interpret_loop (void) {
     readword ();
-    runword ();
+//  runword ();
     // runword_old();
 }
 
