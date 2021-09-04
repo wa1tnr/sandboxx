@@ -1,4 +1,4 @@
-#define DATESTAMP "Sat Sep  4 19:49:32 UTC 2021"
+#define DATESTAMP "Sat Sep  4 20:19:33 UTC 2021"
 #include <Arduino.h>
 
 const String p_project = "Magic 8 Ball";
@@ -39,18 +39,6 @@ void setup() {
   randomSeed(analogRead(26));
   Serial.println("Welcome to Magic 8 ball");
   Serial.println("Please ask your question");
-}
-
-void loop() {
-  waitForQuestion();
-}
-
-void waitForQuestion() {
-  serialData = Serial.read();
-  if (serialData >= 1) {
-    serialData = 0;
-    generateAnswer();
-  }
 }
 
 void generateAnswer() {
@@ -121,7 +109,20 @@ void generateAnswer() {
     default:
       break;
   }
+  // DEBUG // Serial.println("generateRando SEEN");
   generateRando = 0;
+}
+
+void waitForQuestion() {
+  serialData = Serial.read();
+  if (serialData >= 1) {
+    serialData = 0;
+    generateAnswer();
+  }
+}
+
+void loop() {
+  waitForQuestion();
 }
 
 // END
