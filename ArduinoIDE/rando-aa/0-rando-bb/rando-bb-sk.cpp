@@ -117,10 +117,13 @@ void generateAnswer () {
     generateRando = 0;
 }
 
+extern void readword();
+
 void waitForQuestion () {
-    char * buffer;
+    // char * buffer;
     // serialData = Serial.read ();
-    buffer = Serial.read();
+    // buffer = Serial.read();
+    readword();
 /*
     if (serialData >= 1) {
         serialData = 0;
