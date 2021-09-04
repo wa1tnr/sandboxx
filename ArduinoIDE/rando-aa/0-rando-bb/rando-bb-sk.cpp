@@ -7,9 +7,12 @@ const uint8_t version_hi = 0;
 const uint8_t version_lo = 1;
 #define msg01 "It is certain"
 const String response01 = msg01; // "It is certain";
-const String response02 = "Without a doubt";
-const String response03 = "You may rely on it";
-const String response04 = "Yes definitely";
+#define msg02 "Without a doubt"
+const String response02 = msg02; // "Without a doubt";
+#define msg03 "You may rely on it"
+const String response03 = msg03; // "You may rely on it";
+#define msg04 "Yes definitely"
+const String response04 = msg04; // "Yes definitely";
 const String response05 = "It is decidedly so";
 const String response06 = "As I see it, yes";
 const String response07 = "Most likely";
@@ -115,11 +118,17 @@ void generateAnswer () {
 }
 
 void waitForQuestion () {
-    serialData = Serial.read ();
+    char * buffer;
+    // serialData = Serial.read ();
+    buffer = Serial.read();
+/*
     if (serialData >= 1) {
         serialData = 0;
+*/
         generateAnswer ();
+/*
     }
+*/
 }
 
 void loop () {
