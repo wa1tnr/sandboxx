@@ -60,7 +60,8 @@ byte reading () {
     if (ch == EOL_CHAR) {
         Serial.print ('\r');
     } // try to do CR without LF here
-    if ((ch == EOL_CHAR) || (ch == ' ')) {
+    // if ((ch == EOL_CHAR) || (ch == ' ')) {
+    if (ch == EOL_CHAR) { // not parsing using spaces now
         return 0;
     }
     if ((ch == '\010') || (ch == '\177')) { // backspace or rubout
