@@ -1,10 +1,12 @@
-#define DATESTAMP "Sat Sep  4 20:26:52 UTC 2021"
+#define DATESTAMP "Sat Sep  4 20:31:44 UTC 2021"
 #include <Arduino.h>
 
-const String p_project = "Magic 8 Ball";
+#define msg00 "Magic 8 Ball"
+const String p_project = msg00; // "Magic 8 Ball";
 const uint8_t version_hi = 0;
 const uint8_t version_lo = 1;
-const String response01 = "It is certain";
+#define msg01 "It is certain"
+const String response01 = msg01; // "It is certain";
 const String response02 = "Without a doubt";
 const String response03 = "You may rely on it";
 const String response04 = "Yes definitely";
@@ -27,102 +29,101 @@ const String response20 = "My reply is no";
 int generateRando;
 int serialData;
 
-void versionPrint(void)
-{
-  Serial.println(DATESTAMP);
+void versionPrint (void) {
+    Serial.println (DATESTAMP);
 }
 
-void setup() {
-  delay(5000);
-  Serial.begin(9600);
-  versionPrint();
-  randomSeed(analogRead(26));
-  Serial.println("Welcome to Magic 8 ball");
-  Serial.println("Please ask your question");
+void setup () {
+    delay (5000);
+    Serial.begin (9600);
+    versionPrint ();
+    randomSeed (analogRead (26));
+    Serial.println ("Welcome to Magic 8 ball");
+    Serial.println ("Please ask your question");
 }
 
-void generateAnswer() {
-  generateRando = random(1, 20);
-  Serial.print("rando: ");
-  Serial.println(generateRando);
-  switch (generateRando) {
+void generateAnswer () {
+    generateRando = random (1, 20);
+    Serial.print ("rando: ");
+    Serial.println (generateRando);
+    switch (generateRando) {
     case 1:
-      Serial.println(response01);
-      break;
+        Serial.println (response01);
+        break;
     case 2:
-      Serial.println(response02);
-      break;
+        Serial.println (response02);
+        break;
     case 3:
-      Serial.println(response03);
-      break;
+        Serial.println (response03);
+        break;
     case 4:
-      Serial.println(response04);
-      break;
+        Serial.println (response04);
+        break;
     case 5:
-      Serial.println(response05);
-      break;
+        Serial.println (response05);
+        break;
     case 6:
-      Serial.println(response06);
-      break;
+        Serial.println (response06);
+        break;
     case 7:
-      Serial.println(response07);
-      break;
+        Serial.println (response07);
+        break;
     case 8:
-      Serial.println(response08);
-      break;
+        Serial.println (response08);
+        break;
     case 9:
-      Serial.println(response09);
-      break;
+        Serial.println (response09);
+        break;
     case 10:
-      Serial.println(response10);
-      break;
+        Serial.println (response10);
+        break;
     case 11:
-      Serial.println(response11);
-      break;
+        Serial.println (response11);
+        break;
     case 12:
-      Serial.println(response12);
-      break;
+        Serial.println (response12);
+        break;
     case 13:
-      Serial.println(response13);
-      break;
+        Serial.println (response13);
+        break;
     case 14:
-      Serial.println(response14);
-      break;
+        Serial.println (response14);
+        break;
     case 15:
-      Serial.println(response15);
-      break;
+        Serial.println (response15);
+        break;
     case 16:
-      Serial.println(response16);
-      break;
+        Serial.println (response16);
+        break;
     case 17:
-      Serial.println(response17);
-      break;
+        Serial.println (response17);
+        break;
     case 18:
-      Serial.println(response18);
-      break;
+        Serial.println (response18);
+        break;
     case 19:
-      Serial.println(response19);
-      break;
+        Serial.println (response19);
+        break;
     case 20:
-      Serial.println(response20);
-      break;
+        Serial.println (response20);
+        break;
     default:
-      break;
-  }
-  // DEBUG // Serial.println("generateRando SEEN");
-  generateRando = 0;
+        break;
+    }
+    // DEBUG // Serial.println("generateRando SEEN");
+    generateRando = 0;
 }
 
-void waitForQuestion() {
-  serialData = Serial.read();
-  if (serialData >= 1) {
-    serialData = 0;
-    generateAnswer();
-  }
+void waitForQuestion () {
+    serialData = Serial.read ();
+    if (serialData >= 1) {
+        serialData = 0;
+        generateAnswer ();
+    }
 }
 
-void loop() {
-  waitForQuestion();
+void loop () {
+    waitForQuestion ();
 }
 
 // END
