@@ -117,18 +117,18 @@ void generateAnswer () {
     generateRando = 0;
 }
 
-extern void readword();
+extern void readword ();
 
 void waitForQuestion () {
     // char * buffer;
     // serialData = Serial.read ();
     // buffer = Serial.read();
-    readword();
+    readword ();
 /*
     if (serialData >= 1) {
         serialData = 0;
 */
-        generateAnswer ();
+    generateAnswer ();
 /*
     }
 */
