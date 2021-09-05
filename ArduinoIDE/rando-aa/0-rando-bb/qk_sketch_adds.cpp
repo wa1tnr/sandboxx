@@ -1,9 +1,3 @@
-// #define DATESTAMP "                  Sun Sep  5 04:20:05 UTC 2021"
-
-/* Includes Charley Shattuck's Tiny interpreter,
-   similar to myforth's Standalone Interpreter
-   Charley's example code is in the public domain */
-
 // swap these two to use 'cppcheck --enable=all ./thisfile.cpp'
 #define N_CPPCHECK
 #undef  N_CPPCHECK
@@ -12,34 +6,11 @@
 #include <Arduino.h>
 #endif
 
-#define DDEBUG_LVL 0
-
-// verbatim:
-
-/* Tiny interpreter,
-   similar to myforth's Standalone Interpreter
-   This example code is in the public domain */
-
-/* Data stack for parameter passing
-   This "stack" is circular,
-   like a Green Arrays F18A data stack,
-   so overflow and underflow are not possible
-   Number of items must be a power of 2 */
-// const int STKSIZE = 8;
-// const int STKMASK = 7;
-// int stack[STKSIZE];
-// int p = 0;
-
-/* TOS is Top Of Stack */
-// #define TOS stack[p]
-/* NAMED creates a string in flash */
-// #define NAMED(x, y) const char x[]=y
+#define DDEBUG_LVL 0 // 2
 
 /* Terminal Input Buffer for interpreter */
 const byte maxtib = 64; // 16 may be more appropriate
 char tib[maxtib];
-/* buffer required for strings read from flash */
-// char namebuf[maxtib];
 byte pos;
 char ch;
 
@@ -55,7 +26,7 @@ byte reading () {
         Serial.print ('\r');
     } // try to do CR without LF here
 
-    if (ch == EOL_CHAR) { // not parsing using spaces now
+    if (ch == EOL_CHAR) {
         return 0;
     }
     if ((ch == '\010') || (ch == '\177')) { // backspace or rubout
@@ -70,8 +41,8 @@ byte reading () {
         }
         tib[pos--] = 0;
         tib[pos] = 0;
-        return 1; // continue reading keystrokes for this word's name &c.
-    } // backspace or rubout
+        return 1; // continue reading keystrokes
+    }
 
     if (pos < maxtib) {
         tib[pos++] = ch;
