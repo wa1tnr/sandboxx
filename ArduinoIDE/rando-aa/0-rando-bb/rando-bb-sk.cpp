@@ -31,19 +31,19 @@ const String response10 = msg10; // "Signs point to yes";
 #define msg14 "Cannot predict now"
 #define msg15 "Concentrate and ask again"
 #define msg16 "Don’t count on it"
+#define msg17 "Outlook not so good"
+#define msg18 "My sources say no"
+#define msg19 "Very doubtful"
+#define msg20 "My reply is no"
 const String response11 = msg11; // "Reply hazy try again";
 const String response12 = msg12; // "Better not tell you now";
 const String response13 = msg13; // "Ask again later";
 const String response14 = msg14; // "Cannot predict now";
 const String response15 = msg15; // "Concentrate and ask again";
 const String response16 = msg16; // "Don’t count on it";
-#define msg17 "Outlook not so good"
 const String response17 = msg17; // "Outlook not so good";
-#define msg18 "My sources say no"
 const String response18 = msg18; // "My sources say no";
-#define msg19 "Very doubtful"
 const String response19 = msg19; // "Very doubtful";
-#define msg20 "My reply is no"
 const String response20 = msg20; // "My reply is no";
 int generateRando;
 int serialData;
