@@ -1,4 +1,4 @@
-#define DATESTAMP "Sun Sep  5 02:28:58 UTC 2021"
+#define DATESTAMP "Sun Sep  5 02:37:20 UTC 2021"
 #include <Arduino.h>
 
 #define msg00 "Magic 8 Ball"
@@ -72,64 +72,64 @@ void generateAnswer () {
     Serial.println (generateRando);
     switch (generateRando) {
     case 1:
-        Serial.println (response01);
+        Serial.println (msg01);
         break;
     case 2:
-        Serial.println (response02);
+        Serial.println (msg02);
         break;
     case 3:
-        Serial.println (response03);
+        Serial.println (msg03);
         break;
     case 4:
-        Serial.println (response04);
+        Serial.println (msg04);
         break;
     case 5:
-        Serial.println (response05);
+        Serial.println (msg05);
         break;
     case 6:
-        Serial.println (response06);
+        Serial.println (msg06);
         break;
     case 7:
-        Serial.println (response07);
+        Serial.println (msg07);
         break;
     case 8:
-        Serial.println (response08);
+        Serial.println (msg08);
         break;
     case 9:
-        Serial.println (response09);
+        Serial.println (msg09);
         break;
     case 10:
-        Serial.println (response10);
+        Serial.println (msg10);
         break;
     case 11:
-        Serial.println (response11);
+        Serial.println (msg11);
         break;
     case 12:
-        Serial.println (response12);
+        Serial.println (msg12);
         break;
     case 13:
-        Serial.println (response13);
+        Serial.println (msg13);
         break;
     case 14:
-        Serial.println (response14);
+        Serial.println (msg14);
         break;
     case 15:
-        Serial.println (response15);
+        Serial.println (msg15);
         break;
     case 16:
-        Serial.println (response16);
+        Serial.println (msg16);
         break;
     case 17:
-        Serial.println (response17);
+        Serial.println (msg17);
         break;
     case 18:
-        Serial.println (response18);
+        Serial.println (msg18);
         break;
     case 19:
-        Serial.println (response19);
+        Serial.println (msg19);
         break;
     case 20:
-        Serial.println (response20);
+        Serial.println (msg20);
         break;
     default:
         break;
