@@ -1,4 +1,4 @@
-#define DATESTAMP "Sat Sep  4 20:31:44 UTC 2021"
+#define DATESTAMP "Sat Sep  4 23:10:26 UTC 2021"
 #include <Arduino.h>
 
 #define msg00 "Magic 8 Ball"
@@ -36,9 +36,13 @@ void versionPrint (void) {
     Serial.println (DATESTAMP);
 }
 
+// init_gpio init_serial
+
 void setup () {
     delay (5000);
-    Serial.begin (9600);
+    // Serial.begin (9600);
+    init_gpio();
+    init_serial();
     versionPrint ();
     randomSeed (analogRead (26));
     Serial.println ("Welcome to Magic 8 ball");
@@ -120,18 +124,8 @@ void generateAnswer () {
 extern void readword ();
 
 void waitForQuestion () {
-    // char * buffer;
-    // serialData = Serial.read ();
-    // buffer = Serial.read();
     readword ();
-/*
-    if (serialData >= 1) {
-        serialData = 0;
-*/
     generateAnswer ();
-/*
-    }
-*/
 }
 
 void loop () {

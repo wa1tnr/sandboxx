@@ -60,7 +60,7 @@ byte reading () {
     if (ch == EOL_CHAR) {
         Serial.print ('\r');
     } // try to do CR without LF here
-    // if ((ch == EOL_CHAR) || (ch == ' ')) {
+
     if (ch == EOL_CHAR) { // not parsing using spaces now
         return 0;
     }
@@ -101,9 +101,8 @@ void readword () {
     }
 }
 
-/* Run a word via its name */
-void runword (void) {
-}
+// / Run a word via its name /
+// void runword (void) { }
 
 bool pin_state; // is this really a bool or just an int that is equal to zero, or to one
 
@@ -142,24 +141,8 @@ void init_serial (void) {
     }
 }
 
-// int BASE;
-/*
-void unused_setup (void) {
-    init_gpio ();
-    init_serial ();
-    delay (30); // vestigal - may be removed
-    Serial.println ("here.");
-    Serial.println (DATESTAMP);
-    Serial.print ("__LED_BUILTIN__ ");
-    Serial.println (wasted); // temporary - delete me soon
- // BASE = -99;
-}
-*/
-
 void interpret_loop (void) {
     readword ();
-//  runword ();
-    // runword_old();
 }
 
 #ifdef  N_CPPCHECK
