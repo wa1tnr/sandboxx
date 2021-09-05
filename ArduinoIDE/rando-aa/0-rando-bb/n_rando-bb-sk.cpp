@@ -1,30 +1,34 @@
-#define DATESTAMP "Sun Sep  5 02:53:37 UTC 2021"
+#define DATESTAMP "Sun Sep  5 03:31:17 UTC 2021"
 #include <Arduino.h>
 
 #define msg00 "Magic 8 Ball"
 const String p_project = msg00; // "Magic 8 Ball";
 const uint8_t version_hi = 0;
 const uint8_t version_lo = 1;
-#define msg01 "It is certain"
-#define msg02 "Without a doubt"
-#define msg03 "You may rely on it"
-#define msg04 "Yes definitely"
-#define msg05 "It is decidedly so"
-#define msg06 "As I see it, yes"
-#define msg07 "Most likely"
-#define msg08 "Yes"
-#define msg09 "Outlook good"
-#define msg10 "Signs point to yes"
-#define msg11 "Reply hazy try again"
-#define msg12 "Better not tell you now"
-#define msg13 "Ask again later"
-#define msg14 "Cannot predict now"
-#define msg15 "Concentrate and ask again"
-#define msg16 "Don’t count on it"
-#define msg17 "Outlook not so good"
-#define msg18 "My sources say no"
-#define msg19 "Very doubtful"
-#define msg20 "My reply is no"
+
+   //          1...v....x....v....x....v
+const char dodeca_face_message [][28] { // exact count
+ "It is certain            " ,
+ "Without a doubt          " ,
+ "You may rely on it       " ,
+ "Yes definitely           " ,
+ "It is decidedly so       " ,
+ "As I see it, yes         " ,
+ "Most likely              " ,
+ "Yes                      " ,
+ "Outlook good             " ,
+ "Signs point to yes       " ,
+ "Reply hazy try again     " ,
+ "Better not tell you now  " ,
+ "Ask again later          " ,
+ "Cannot predict now       " ,
+ "Concentrate and ask again" ,
+ "Don’t count on it        " ,
+ "Outlook not so good      " ,
+ "My sources say no        " ,
+ "Very doubtful            " ,
+ "My reply is no           " ,
+};
 
 int generateRando;
 int serialData;
@@ -51,6 +55,10 @@ void generateAnswer () {
     generateRando = random (1, 20);
     Serial.print ("rando: ");
     Serial.println (generateRando);
+    Serial.print("bracket >> ");
+    Serial.print(dodeca_face_message[generateRando]);
+    Serial.println(" << bracket");
+/*
     switch (generateRando) {
     case 1:
         Serial.println (msg01);
@@ -115,6 +123,7 @@ void generateAnswer () {
     default:
         break;
     }
+*/
     // DEBUG // Serial.println("generateRando SEEN");
     generateRando = 0;
 }

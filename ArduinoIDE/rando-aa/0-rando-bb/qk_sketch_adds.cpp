@@ -1,4 +1,4 @@
-#define DATESTAMP "                  Wed Aug 25 21:33:39 UTC 2021"
+// #define DATESTAMP "                  Wed Aug 25 21:33:39 UTC 2021"
 
 /* Includes Charley Shattuck's Tiny interpreter,
    similar to myforth's Standalone Interpreter
