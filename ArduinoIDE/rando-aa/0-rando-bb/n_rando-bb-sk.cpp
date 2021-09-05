@@ -1,4 +1,4 @@
-#define DATESTAMP "Sun Sep  5 05:02:20 UTC 2021"
+#define DATESTAMP "Sun Sep  5 05:14:35 UTC 2021"
 // swap these two to use 'cppcheck --enable=all ./thisfile.cpp'
 #define N_CPPCHECK
 #undef  N_CPPCHECK
@@ -47,9 +47,6 @@ void versionPrint (void) {
     Serial.println (DATESTAMP);
 }
 
-extern void init_gpio ();
-extern void init_serial ();
-
 void generateAnswer () {
     generateRando = random (1, 20);
     Serial.print ("rando: ");
@@ -77,12 +74,17 @@ void waitForQuestion () {
     generateAnswer ();
 }
 
+extern void init_gpio ();
+extern void init_serial ();
+
+#define ANA_PIN 26
+
 void setup () {
-    delay (5000);
+    delay (1100);
     init_gpio ();
     init_serial ();
     versionPrint ();
-    randomSeed (analogRead (26));
+    randomSeed (analogRead (ANA_PIN));
     Serial.println ("Welcome to Magic 8 ball");
     Serial.println ("Please ask your question");
 }

@@ -25,21 +25,21 @@
    like a Green Arrays F18A data stack,
    so overflow and underflow are not possible
    Number of items must be a power of 2 */
-const int STKSIZE = 8;
-const int STKMASK = 7;
-int stack[STKSIZE];
-int p = 0;
+// const int STKSIZE = 8;
+// const int STKMASK = 7;
+// int stack[STKSIZE];
+// int p = 0;
 
 /* TOS is Top Of Stack */
-#define TOS stack[p]
+// #define TOS stack[p]
 /* NAMED creates a string in flash */
-#define NAMED(x, y) const char x[]=y
+// #define NAMED(x, y) const char x[]=y
 
 /* Terminal Input Buffer for interpreter */
 const byte maxtib = 64; // 16 may be more appropriate
 char tib[maxtib];
 /* buffer required for strings read from flash */
-char namebuf[maxtib];
+// char namebuf[maxtib];
 byte pos;
 char ch;
 
