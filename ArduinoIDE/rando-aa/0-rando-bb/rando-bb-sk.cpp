@@ -26,16 +26,16 @@ const String response08 = msg08; // "Yes";
 const String response09 = msg09; // "Outlook good";
 const String response10 = msg10; // "Signs point to yes";
 #define msg11 "Reply hazy try again"
-const String response11 = msg11; // "Reply hazy try again";
 #define msg12 "Better not tell you now"
-const String response12 = msg12; // "Better not tell you now";
 #define msg13 "Ask again later"
-const String response13 = msg13; // "Ask again later";
 #define msg14 "Cannot predict now"
-const String response14 = msg14; // "Cannot predict now";
 #define msg15 "Concentrate and ask again"
-const String response15 = msg15; // "Concentrate and ask again";
 #define msg16 "Don’t count on it"
+const String response11 = msg11; // "Reply hazy try again";
+const String response12 = msg12; // "Better not tell you now";
+const String response13 = msg13; // "Ask again later";
+const String response14 = msg14; // "Cannot predict now";
+const String response15 = msg15; // "Concentrate and ask again";
 const String response16 = msg16; // "Don’t count on it";
 #define msg17 "Outlook not so good"
 const String response17 = msg17; // "Outlook not so good";
