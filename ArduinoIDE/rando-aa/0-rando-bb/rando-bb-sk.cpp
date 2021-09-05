@@ -1,4 +1,4 @@
-#define DATESTAMP "Sun Sep  5 02:10:59 UTC 2021"
+#define DATESTAMP "Sun Sep  5 02:28:58 UTC 2021"
 #include <Arduino.h>
 
 #define msg00 "Magic 8 Ball"
@@ -13,22 +13,38 @@ const String response02 = msg02; // "Without a doubt";
 const String response03 = msg03; // "You may rely on it";
 #define msg04 "Yes definitely"
 const String response04 = msg04; // "Yes definitely";
-const String response05 = "It is decidedly so";
-const String response06 = "As I see it, yes";
-const String response07 = "Most likely";
-const String response08 = "Yes";
-const String response09 = "Outlook good";
-const String response10 = "Signs point to yes";
-const String response11 = "Reply hazy try again";
-const String response12 = "Better not tell you now";
-const String response13 = "Ask again later";
-const String response14 = "Cannot predict now";
-const String response15 = "Concentrate and ask again";
-const String response16 = "Don’t count on it";
-const String response17 = "Outlook not so good";
-const String response18 = "My sources say no";
-const String response19 = "Very doubtful";
-const String response20 = "My reply is no";
+#define msg05 "It is decidedly so"
+const String response05 = msg05; // "It is decidedly so";
+#define msg06 "As I see it, yes"
+const String response06 = msg06; // "As I see it, yes";
+#define msg07 "Most likely"
+const String response07 = msg07; // "Most likely";
+#define msg08 "Yes"
+const String response08 = msg08; // "Yes";
+#define msg09 "Outlook good"
+const String response09 = msg09; // "Outlook good";
+#define msg10 "Signs point to yes"
+const String response10 = msg10; // "Signs point to yes";
+#define msg11 "Reply hazy try again"
+const String response11 = msg11; // "Reply hazy try again";
+#define msg12 "Better not tell you now"
+const String response12 = msg12; // "Better not tell you now";
+#define msg13 "Ask again later"
+const String response13 = msg13; // "Ask again later";
+#define msg14 "Cannot predict now"
+const String response14 = msg14; // "Cannot predict now";
+#define msg15 "Concentrate and ask again"
+const String response15 = msg15; // "Concentrate and ask again";
+#define msg16 "Don’t count on it"
+const String response16 = msg16; // "Don’t count on it";
+#define msg17 "Outlook not so good"
+const String response17 = msg17; // "Outlook not so good";
+#define msg18 "My sources say no"
+const String response18 = msg18; // "My sources say no";
+#define msg19 "Very doubtful"
+const String response19 = msg19; // "Very doubtful";
+#define msg20 "My reply is no"
+const String response20 = msg20; // "My reply is no";
 int generateRando;
 int serialData;
 
