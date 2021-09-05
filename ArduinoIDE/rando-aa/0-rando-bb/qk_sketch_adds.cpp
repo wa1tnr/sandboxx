@@ -132,9 +132,9 @@ void init_serial (void) {
 
 #ifdef  N_CPPCHECK
 int main (void) {
-    init_gpio();
-    init_serial();
-    readword();
+    init_gpio ();
+    init_serial ();
+    readword ();
 }
 #endif
 

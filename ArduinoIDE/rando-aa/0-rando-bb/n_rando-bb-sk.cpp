@@ -1,4 +1,4 @@
-#define DATESTAMP "Sun Sep  5 04:53:48 UTC 2021"
+#define DATESTAMP "Sun Sep  5 05:02:20 UTC 2021"
 // swap these two to use 'cppcheck --enable=all ./thisfile.cpp'
 #define N_CPPCHECK
 #undef  N_CPPCHECK
@@ -54,10 +54,19 @@ void generateAnswer () {
     generateRando = random (1, 20);
     Serial.print ("rando: ");
     Serial.println (generateRando);
-    Serial.print ("bracket >> ");
-    // Serial.print (   dodeca_face_message[generateRando]);
+    if (DDEBUG_LVL == 2) {
+        Serial.print ("bracket >> ");
+    }
+
     Serial.print (icosahdrn_face_message[generateRando]);
-    Serial.println (" << bracket");
+
+    if (DDEBUG_LVL == 0) {
+        Serial.println ();
+    }
+
+    if (DDEBUG_LVL == 2) {
+        Serial.println (" << bracket");
+    }
     generateRando = 0;
 }
 
