@@ -6,14 +6,14 @@ const String p_project = msg00; // "Magic 8 Ball";
 const uint8_t version_hi = 0;
 const uint8_t version_lo = 1;
 #define msg01 "It is certain"
-const String response01 = msg01; // "It is certain";
 #define msg02 "Without a doubt"
-const String response02 = msg02; // "Without a doubt";
 #define msg03 "You may rely on it"
-const String response03 = msg03; // "You may rely on it";
 #define msg04 "Yes definitely"
-const String response04 = msg04; // "Yes definitely";
 #define msg05 "It is decidedly so"
+const String response01 = msg01; // "It is certain";
+const String response02 = msg02; // "Without a doubt";
+const String response03 = msg03; // "You may rely on it";
+const String response04 = msg04; // "Yes definitely";
 const String response05 = msg05; // "It is decidedly so";
 #define msg06 "As I see it, yes"
 const String response06 = msg06; // "As I see it, yes";
