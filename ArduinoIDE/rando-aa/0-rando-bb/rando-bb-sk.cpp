@@ -15,16 +15,7 @@ const uint8_t version_lo = 1;
 #define msg08 "Yes"
 #define msg09 "Outlook good"
 #define msg10 "Signs point to yes"
-const String response01 = msg01; // "It is certain";
-const String response02 = msg02; // "Without a doubt";
-const String response03 = msg03; // "You may rely on it";
-const String response04 = msg04; // "Yes definitely";
-const String response05 = msg05; // "It is decidedly so";
-const String response06 = msg06; // "As I see it, yes";
-const String response07 = msg07; // "Most likely";
-const String response08 = msg08; // "Yes";
-const String response09 = msg09; // "Outlook good";
-const String response10 = msg10; // "Signs point to yes";
+
 #define msg11 "Reply hazy try again"
 #define msg12 "Better not tell you now"
 #define msg13 "Ask again later"
@@ -35,6 +26,18 @@ const String response10 = msg10; // "Signs point to yes";
 #define msg18 "My sources say no"
 #define msg19 "Very doubtful"
 #define msg20 "My reply is no"
+
+const String response01 = msg01; // "It is certain";
+const String response02 = msg02; // "Without a doubt";
+const String response03 = msg03; // "You may rely on it";
+const String response04 = msg04; // "Yes definitely";
+const String response05 = msg05; // "It is decidedly so";
+const String response06 = msg06; // "As I see it, yes";
+const String response07 = msg07; // "Most likely";
+const String response08 = msg08; // "Yes";
+const String response09 = msg09; // "Outlook good";
+const String response10 = msg10; // "Signs point to yes";
+
 const String response11 = msg11; // "Reply hazy try again";
 const String response12 = msg12; // "Better not tell you now";
 const String response13 = msg13; // "Ask again later";
