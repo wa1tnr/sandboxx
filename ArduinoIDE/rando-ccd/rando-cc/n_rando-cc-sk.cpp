@@ -1,4 +1,5 @@
-#define DATESTAMP "Sun Sep  5 05:23:27 UTC 2021"
+// #define DATESTAMP "Sun Sep  5 21:07:55 UTC 2021"
+#include "p_rando.h"
 // swap these two to use 'cppcheck --enable=all ./thisfile.cpp'
 #define N_CPPCHECK
 #undef  N_CPPCHECK
@@ -38,24 +39,31 @@ const char icosahdrn_face_message[][28] { // exact count
     "My sources say no        ",
     "Very doubtful            ",
     "My reply is no           ",};
-   //   1...v....x....v....x....v..
 
-int generateRando;
+// int generateRando;
 int serialData;
 
 void versionPrint (void) {
     Serial.println (DATESTAMP);
 }
 
-void generateAnswer () {
-    generateRando = random (1, 20);
+int generateAnswer (void) {
+    int genRnd = random (1, 20);
     Serial.print ("rando: ");
-    Serial.println (generateRando);
+    Serial.println (genRnd);
+    return (genRnd);
+}
+
+// void reset_m8b (void) { generateRando = 0; }
+
+void reportIcosaFaceMsg (int icos_idx) {
+// int generateRando;
+
     if (DDEBUG_LVL == 2) {
         Serial.print ("bracket >> ");
     }
 
-    Serial.print (icosahdrn_face_message[generateRando]);
+    Serial.print (icosahdrn_face_message[icos_idx]);
 
     if (DDEBUG_LVL == 0) {
         Serial.println ();
@@ -64,14 +72,16 @@ void generateAnswer () {
     if (DDEBUG_LVL == 2) {
         Serial.println (" << bracket");
     }
-    generateRando = 0;
 }
 
 extern void readword (); // keyboard input via USB serial port
 
+
 void waitForQuestion () {
     readword ();
-    generateAnswer ();
+    int answ = generateAnswer ();
+    reportIcosaFaceMsg (answ);
+    // reset_m8b ();
 }
 
 extern void init_gpio ();
