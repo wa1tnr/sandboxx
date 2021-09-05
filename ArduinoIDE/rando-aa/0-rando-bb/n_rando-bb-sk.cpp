@@ -1,4 +1,4 @@
-#define DATESTAMP "Sun Sep  5 02:43:59 UTC 2021"
+#define DATESTAMP "Sun Sep  5 02:53:37 UTC 2021"
 #include <Arduino.h>
 
 #define msg00 "Magic 8 Ball"
@@ -25,29 +25,6 @@ const uint8_t version_lo = 1;
 #define msg18 "My sources say no"
 #define msg19 "Very doubtful"
 #define msg20 "My reply is no"
-
-/*
-const String response01 = msg01; // "It is certain";
-const String response02 = msg02; // "Without a doubt";
-const String response03 = msg03; // "You may rely on it";
-const String response04 = msg04; // "Yes definitely";
-const String response05 = msg05; // "It is decidedly so";
-const String response06 = msg06; // "As I see it, yes";
-const String response07 = msg07; // "Most likely";
-const String response08 = msg08; // "Yes";
-const String response09 = msg09; // "Outlook good";
-const String response10 = msg10; // "Signs point to yes";
-const String response11 = msg11; // "Reply hazy try again";
-const String response12 = msg12; // "Better not tell you now";
-const String response13 = msg13; // "Ask again later";
-const String response14 = msg14; // "Cannot predict now";
-const String response15 = msg15; // "Concentrate and ask again";
-const String response16 = msg16; // "Don’t count on it";
-const String response17 = msg17; // "Outlook not so good";
-const String response18 = msg18; // "My sources say no";
-const String response19 = msg19; // "Very doubtful";
-const String response20 = msg20; // "My reply is no";
-*/
 
 int generateRando;
 int serialData;
