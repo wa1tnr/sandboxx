@@ -1,4 +1,4 @@
-#define DATESTAMP "Sun Sep  5 03:46:31 UTC 2021"
+#define DATESTAMP "Sun Sep  5 03:54:32 UTC 2021"
 #include <Arduino.h>
 
 #define msg00 "Magic 8 Ball"
@@ -7,7 +7,9 @@ const String p_project = msg00; // "Magic 8 Ball";
 const uint8_t version_hi = 0;
 const uint8_t version_lo = 1;
 
-const char dodeca_face_message[][28] { // exact count
+// https://en.wikipedia.org/wiki/Icosahedron
+
+const char icosahdrn_face_message[][28] { // exact count
         "It is certain            ",
         "Without a doubt          ",
         "You may rely on it       ",
@@ -45,7 +47,8 @@ void generateAnswer () {
     Serial.print ("rando: ");
     Serial.println (generateRando);
     Serial.print ("bracket >> ");
-    Serial.print (dodeca_face_message[generateRando]);
+ // Serial.print (   dodeca_face_message[generateRando]);
+    Serial.print (icosahdrn_face_message[generateRando]);
     Serial.println (" << bracket");
     generateRando = 0;
 }
