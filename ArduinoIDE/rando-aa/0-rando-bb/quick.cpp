@@ -20,12 +20,6 @@
    similar to myforth's Standalone Interpreter
    This example code is in the public domain */
 
-/* Structure of a dictionary entry */
-typedef struct {
-    const char *name;
-    void (*function) ();
-} entry;
-
 /* Data stack for parameter passing
    This "stack" is circular,
    like a Green Arrays F18A data stack,
@@ -102,21 +96,16 @@ void readword () {
 }
 
 // / Run a word via its name /
-// void runword (void) { }
 
 bool pin_state; // is this really a bool or just an int that is equal to zero, or to one
 
-// int wasted;
-
 void cpl (int pin) {
-    // wasted = pin;
     pin_state = digitalRead (LED_BUILTIN);
     pin_state = !pin_state; // how does this interface to typing as bool or as int
     digitalWrite (LED_BUILTIN, pin_state);
 }
 
 void delayed (void) {
-    // if (pin_state != 0) {
     if (pin_state != false) { // obeyed bool typing - made explicit.  mistake?
         delay (10);
         return;
@@ -153,9 +142,10 @@ int main (void) {
 #endif
 
 // ENiD,
-//  $ cppcheck --enable=style n_forth-avr-d.cpp
-// Checking n_forth-avr-d.cpp ...
-// [n_forth-avr-d.cpp:229]: (style) Non-boolean value returned from function returning bool
-// [n_forth-avr-d.cpp:233]: (style) Non-boolean value returned from function returning bool
-
+//
+// $  cppcheck --enable=style quick.cpp
+// Checking quick.cpp ...
+// [quick.cpp:25]: (style) struct member 'entry::name' is never used.
+// [quick.cpp:26]: (style) struct member 'entry::function' is never used.
+// $
 // END.
