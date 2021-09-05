@@ -1,4 +1,4 @@
-// #define DATESTAMP "                  Wed Aug 25 21:33:39 UTC 2021"
+// #define DATESTAMP "                  Sun Sep  5 04:20:05 UTC 2021"
 
 /* Includes Charley Shattuck's Tiny interpreter,
    similar to myforth's Standalone Interpreter
@@ -130,22 +130,17 @@ void init_serial (void) {
     }
 }
 
-void interpret_loop (void) {
-    readword ();
-}
-
 #ifdef  N_CPPCHECK
 int main (void) {
-    setup ();
-    loop ();
+    init_gpio();
+    init_serial();
+    readword();
 }
 #endif
 
 // ENiD,
 //
-// $  cppcheck --enable=style quick.cpp
-// Checking quick.cpp ...
-// [quick.cpp:25]: (style) struct member 'entry::name' is never used.
-// [quick.cpp:26]: (style) struct member 'entry::function' is never used.
+// $ cppcheck --enable=all ./qk_sketch_adds.cpp 
+// Checking qk_sketch_adds.cpp ...
 // $
 // END.
