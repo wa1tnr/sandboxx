@@ -74,33 +74,47 @@ void reportIcosaFaceMsg (int icos_idx) {
     }
 }
 
-extern void readword (); // keyboard input via USB serial port
+void answerQuestion() {
+    int answ = generateAnswer ();
+    reportIcosaFaceMsg (answ);
+}
 
+extern void readword (); // keyboard input via USB serial port
 
 void waitForQuestion () {
     readword ();
-    int answ = generateAnswer ();
-    reportIcosaFaceMsg (answ);
-    // reset_m8b ();
+}
+
+void greet(void) {
+    Serial.println ("Welcome to Magic 8 ball");
+    Serial.println ("Please ask your question");
+}
+
+#define ANA_PIN 26
+
+void  randomize(void) {
+    randomSeed (analogRead (ANA_PIN));
+}
+
+void hold_booting(void) {
+    delay (1100);
 }
 
 extern void init_gpio ();
 extern void init_serial ();
 
-#define ANA_PIN 26
-
 void setup () {
-    delay (1100);
+    hold_booting();
     init_gpio ();
     init_serial ();
     versionPrint ();
-    randomSeed (analogRead (ANA_PIN));
-    Serial.println ("Welcome to Magic 8 ball");
-    Serial.println ("Please ask your question");
+    randomize();
+    greet();
 }
 
 void loop () {
     waitForQuestion ();
+    answerQuestion();
 }
 
 #ifdef  N_CPPCHECK
