@@ -1,4 +1,3 @@
-// #define DATESTAMP "Sun Sep  5 21:07:55 UTC 2021"
 #include "p_rando.h"
 // swap these two to use 'cppcheck --enable=all ./thisfile.cpp'
 #define N_CPPCHECK
@@ -9,12 +8,6 @@
 #endif
 
 #define DDEBUG_LVL 0
-
-#define msg00 "Magic 8 Ball"
-
-const String p_project = msg00; // "Magic 8 Ball";
-const uint8_t version_hi = 0;
-const uint8_t version_lo = 1;
 
 // https://en.wikipedia.org/wiki/Icosahedron
 
@@ -40,9 +33,6 @@ const char icosahdrn_face_message[][28] { // exact count
     "Very doubtful            ",
     "My reply is no           ",};
 
-// int generateRando;
-int serialData;
-
 void versionPrint (void) {
     Serial.println (DATESTAMP);
 }
@@ -51,14 +41,10 @@ int generateAnswer (void) {
     int genRnd = random (1, 20);
     Serial.print ("rando: ");
     Serial.println (genRnd);
-    return (genRnd);
+    return genRnd;
 }
 
-// void reset_m8b (void) { generateRando = 0; }
-
 void reportIcosaFaceMsg (int icos_idx) {
-// int generateRando;
-
     if (DDEBUG_LVL == 2) {
         Serial.print ("bracket >> ");
     }
@@ -74,47 +60,47 @@ void reportIcosaFaceMsg (int icos_idx) {
     }
 }
 
-void answerQuestion() {
+void answerQuestion (void) {
     int answ = generateAnswer ();
     reportIcosaFaceMsg (answ);
 }
 
-extern void readword (); // keyboard input via USB serial port
+extern void readword (void); // keyboard input via USB serial port
 
-void waitForQuestion () {
+void waitForQuestion (void) {
     readword ();
 }
 
-void greet(void) {
+void greet (void) {
     Serial.println ("Welcome to Magic 8 ball");
     Serial.println ("Please ask your question");
 }
 
 #define ANA_PIN 26
 
-void  randomize(void) {
+void randomize (void) {
     randomSeed (analogRead (ANA_PIN));
 }
 
-void hold_booting(void) {
+void hold_booting (void) {
     delay (1100);
 }
 
-extern void init_gpio ();
-extern void init_serial ();
+extern void init_gpio (void);
+extern void init_serial (void);
 
-void setup () {
-    hold_booting();
+void setup (void) {
+    hold_booting ();
     init_gpio ();
     init_serial ();
     versionPrint ();
-    randomize();
-    greet();
+    greet ();
+    randomize ();
 }
 
-void loop () {
+void loop (void) {
     waitForQuestion ();
-    answerQuestion();
+    answerQuestion ();
 }
 
 #ifdef  N_CPPCHECK
@@ -124,6 +110,6 @@ int main (void) {
 }
 #endif
 
-// $  cppcheck --enable=all ./n_rando-bb-sk.cpp
-// Checking n_rando-bb-sk.cpp ...
+// $  cppcheck --enable=all ./n_rando-cc-sk.cpp
+// Checking n_rando-cc-sk.cpp ...
 // END
