@@ -60,9 +60,13 @@ void reportIcosaFaceMsg (int icos_idx) {
     }
 }
 
+void printAnswer (int answer) {
+    reportIcosaFaceMsg (answer);
+}
+
 void answerQuestion (void) {
     int answ = generateAnswer ();
-    reportIcosaFaceMsg (answ);
+    printAnswer (answ);
 }
 
 extern void readword (void); // keyboard input via USB serial port
