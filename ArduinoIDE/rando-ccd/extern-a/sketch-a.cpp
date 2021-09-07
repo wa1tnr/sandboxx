@@ -68,10 +68,10 @@ void setup () {
 }
 
 void generateAnswer () {
-        int generateRando = random (1, 20);
-        Serial.print ("  rando: "); // same line as the 'question' put to M8B
-        Serial.println (generateRando);
-        Serial.println (responses[generateRando]);
+    int generateRando = random (1, 20);
+    Serial.print ("  rando: "); // same line as the 'question' put to M8B
+    Serial.println (generateRando);
+    Serial.println (responses[generateRando]);
 }
 
 #define EOL '\n'
