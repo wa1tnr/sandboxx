@@ -1,4 +1,4 @@
-// Tue Sep  7 05:47:53 UTC 2021
+// Tue Sep  7 06:18:33 UTC 2021
 
 #include <Arduino.h>
 
@@ -67,8 +67,14 @@ void setup () {
     Serial.println ("Please ask your question");
 }
 
-void loop () {
-    waitForQuestion ();
+void generateAnswer () {
+    if (newData == true) {
+        int generateRando = random (1, 20);
+        Serial.print ("rando: ");
+        Serial.println (generateRando);
+        Serial.println (responses[generateRando]);
+        newData = false;
+    }
 }
 
 void waitForQuestion () {
@@ -94,14 +100,8 @@ void waitForQuestion () {
     generateAnswer ();
 }
 
-void generateAnswer () {
-    if (newData == true) {
-        int generateRando = random (1, 20);
-        Serial.print ("rando: ");
-        Serial.println (generateRando);
-        Serial.println (responses[generateRando]);
-        newData = false;
-    }
+void loop () {
+    waitForQuestion ();
 }
 
 /* for cppcheck only
