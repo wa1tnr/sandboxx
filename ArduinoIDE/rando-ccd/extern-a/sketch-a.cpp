@@ -1,4 +1,4 @@
-// Tue Sep  7 06:18:33 UTC 2021
+#define DATESTAMP "Tue Sep  7 07:45:07 UTC 2021"
 
 #include <Arduino.h>
 
@@ -55,7 +55,9 @@ void versionPrint (void) {
     Serial.print ("Version: ");
     Serial.print (version_hi);
     Serial.print ('.');
-    Serial.println (version_lo);
+    Serial.print (version_lo);
+    Serial.print ("  ");
+    Serial.println (DATESTAMP);
 }
 
 void setup () {
@@ -70,33 +72,39 @@ void setup () {
 void generateAnswer () {
     if (newData == true) {
         int generateRando = random (1, 20);
-        Serial.print ("rando: ");
+        Serial.print ("  rando: "); // same line as the 'question' put to M8B
         Serial.println (generateRando);
         Serial.println (responses[generateRando]);
         newData = false;
     }
 }
 
+#define EOL '\n'
+#define ECHO_CHARS true
+
 void waitForQuestion () {
     static byte ndx = 0;
-    char endMarker = '\n';
+    char endMarker = EOL;
     char rc;
-    while (Serial.available () > 0 && newData == false) {
+
+    while (!Serial.available ()); // hold for input
+    do {
         rc = Serial.read ();
-        if (rc != endMarker) {
-            serialData[ndx] = rc;
-            ndx++;
-            if (ndx >= charCount) {
-                ndx = charCount - 1;
+        // echo handling
+        if (1) { // echo 1  no echo 0
+            if (((rc > 31) && (rc < 127)
+                ) || (rc == 8)
+                ) {
+                if (rc == 8) { // backspace - does not maintain ndx as it should
+                    Serial.print (rc);
+                    Serial.print (' ');
+                }
+                Serial.print (rc);
             }
-            newData = true;
         }
-        else {
-            serialData[ndx] = '\0'; // terminate the string
-            ndx = 0;
-            newData = true;
-        }
-    }
+
+        newData = true;
+    } while (rc != endMarker);
     generateAnswer ();
 }
 
@@ -105,9 +113,9 @@ void loop () {
 }
 
 /* for cppcheck only
-int main(void) {
-  setup();
-  loop();
+int main (void) {
+    setup ();
+    loop ();
 }
 */
 
