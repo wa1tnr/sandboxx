@@ -1,6 +1,5 @@
 // n_sketch-tdefptr-aa.cpp
-// Sun 10 Oct 22:08:05 UTC 2021
-#define DATE_STAMP "Sun 10 Oct 22:08:05 UTC 2021"
+#define DATE_STAMP "Sun 10 Oct 22:21:01 UTC 2021"
 
 // swap these two to use 'cppcheck --enable=all ./thisfile.cpp'
 #define N_CPPCHECK
@@ -9,8 +8,6 @@
 #ifndef  N_CPPCHECK
 #include <Arduino.h>
 #endif
-
-// #include <Arduino.h>
 
 typedef void (*func) (void); // compiles as-is!
 
@@ -52,7 +49,7 @@ void setup (void) {
     Serial.println ("HELLO");
     Serial.println (DATE_STAMP);
     // at least one use is required for cppcheck:
-    test_gpio_TEMP();
+    test_gpio_TEMP ();
 }
 
 void loop (void) {
