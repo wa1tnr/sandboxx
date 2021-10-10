@@ -1,4 +1,4 @@
 // hello today
 #include <Arduino.h>
-setup() {} loop() {}
+void setup(void) {} void loop(void) {}
 // END.
