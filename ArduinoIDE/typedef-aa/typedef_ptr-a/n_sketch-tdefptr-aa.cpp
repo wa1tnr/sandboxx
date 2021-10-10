@@ -1,8 +1,16 @@
 // n_sketch-tdefptr-aa.cpp
-// Sun 10 Oct 21:54:26 UTC 2021
-
-#include <Arduino.h>
+// Sun 10 Oct 21:58:14 UTC 2021
 #define DATE_STAMP "Sun 10 Oct 21:54:26 UTC 2021"
+
+// swap these two to use 'cppcheck --enable=all ./thisfile.cpp'
+#define N_CPPCHECK
+#undef  N_CPPCHECK
+
+#ifndef  N_CPPCHECK
+#include <Arduino.h>
+#endif
+
+// #include <Arduino.h>
 
 typedef void (*func) (void); // compiles as-is!
 
