@@ -1,22 +1,22 @@
 // n_sketch-tdefptr-aa.cpp
-// Sun 10 Oct 21:43:32 UTC 2021
+// Sun 10 Oct 21:54:26 UTC 2021
 
 #include <Arduino.h>
-#define DATE_STAMP "Sun 10 Oct 21:43:32 UTC 2021"
+#define DATE_STAMP "Sun 10 Oct 21:54:26 UTC 2021"
 
-typedef void (*func)(void); // compiles as-is!
+typedef void (*func) (void); // compiles as-is!
 
-void test_gpio_TEMP(void) {
+void test_gpio_TEMP (void) {
     digitalWrite (LED_BUILTIN, 1);
-    delay(100);
+    delay (100);
     digitalWrite (LED_BUILTIN, 0);
-    delay(500);
+    delay (500);
 }
 
-void _execute(void) {
-  func function; // see NOTE AA, bottom of file
-  function = *test_gpio_TEMP; // flashDict[w - 1].function; Dictionary.
-  function();
+void _execute (void) {
+    func function; // see NOTE AA, bottom of file
+    function = *test_gpio_TEMP; // flashDict[w - 1].function; Dictionary.
+    function ();
 }
 
 void init_gpio (void) {
@@ -32,19 +32,20 @@ void init_serial (void) {
 }
 
 #define blinks 7
-void setup(void) {
+void setup (void) {
     init_gpio ();
-    delay(3000);
-    for (int count = blinks; count >0; count--) {
+    delay (3000);
+    for (int count = blinks; count > 0; count--) {
         // test_gpio_TEMP();
-        _execute();
+        _execute ();
     }
     init_serial ();
-    delay(2000); Serial.println("HELLO");
-    Serial.println(DATE_STAMP);
+    delay (2000);
+    Serial.println ("HELLO");
+    Serial.println (DATE_STAMP);
 }
 
-void loop(void) {
+void loop (void) {
     // statements
 }
 
