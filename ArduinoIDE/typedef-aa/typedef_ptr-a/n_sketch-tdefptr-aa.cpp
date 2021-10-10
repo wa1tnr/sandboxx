@@ -17,6 +17,13 @@ void init_gpio (void) {
     digitalWrite (LED_BUILTIN, 0);
 }
 
+void init_serial (void) {
+    Serial.begin (115200);
+    while (!Serial) {
+        // blink ();
+    }
+}
+
 #define blinks 7
 void setup(void) {
     init_gpio ();
@@ -24,6 +31,8 @@ void setup(void) {
     for (int count = blinks; count >0; count--) {
         test_gpio_TEMP();
     }
+    init_serial ();
+    delay(2000); Serial.println("HELLO");
 }
 
 void loop(void) {
