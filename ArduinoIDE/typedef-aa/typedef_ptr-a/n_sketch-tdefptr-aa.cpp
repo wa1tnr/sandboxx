@@ -1,6 +1,6 @@
 // n_sketch-tdefptr-aa.cpp
-// Sun 10 Oct 21:58:14 UTC 2021
-#define DATE_STAMP "Sun 10 Oct 22:04:54 UTC 2021"
+// Sun 10 Oct 22:08:05 UTC 2021
+#define DATE_STAMP "Sun 10 Oct 22:08:05 UTC 2021"
 
 // swap these two to use 'cppcheck --enable=all ./thisfile.cpp'
 #define N_CPPCHECK
@@ -51,6 +51,8 @@ void setup (void) {
     delay (2000);
     Serial.println ("HELLO");
     Serial.println (DATE_STAMP);
+    // at least one use is required for cppcheck:
+    test_gpio_TEMP();
 }
 
 void loop (void) {
