@@ -1,15 +1,22 @@
 // n_sketch-tdefptr-aa.cpp
-// Sun 10 Oct 21:06:13 UTC 2021
+// Sun 10 Oct 21:43:32 UTC 2021
 
 #include <Arduino.h>
+#define DATE_STAMP "Sun 10 Oct 21:43:32 UTC 2021"
 
-void (*func)(void); // compiles as-is!
+typedef void (*func)(void); // compiles as-is!
 
 void test_gpio_TEMP(void) {
     digitalWrite (LED_BUILTIN, 1);
     delay(100);
     digitalWrite (LED_BUILTIN, 0);
     delay(500);
+}
+
+void _execute(void) {
+  func function; // see NOTE AA, bottom of file
+  function = *test_gpio_TEMP; // flashDict[w - 1].function; Dictionary.
+  function();
 }
 
 void init_gpio (void) {
@@ -29,14 +36,20 @@ void setup(void) {
     init_gpio ();
     delay(3000);
     for (int count = blinks; count >0; count--) {
-        test_gpio_TEMP();
+        // test_gpio_TEMP();
+        _execute();
     }
     init_serial ();
     delay(2000); Serial.println("HELLO");
+    Serial.println(DATE_STAMP);
 }
 
 void loop(void) {
     // statements
 }
+
+//  NOTE AA
+//  func function;
+//  https://github.com/wa1tnr/ainsuForth-gen-exp-m4/blob/master/0-Distribution.d/YAFFA-ARM-master/Dictionary.ino#L1033
 
 // END.
