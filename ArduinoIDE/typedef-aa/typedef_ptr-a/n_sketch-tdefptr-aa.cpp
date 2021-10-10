@@ -1,6 +1,6 @@
 // n_sketch-tdefptr-aa.cpp
 // Sun 10 Oct 21:58:14 UTC 2021
-#define DATE_STAMP "Sun 10 Oct 21:54:26 UTC 2021"
+#define DATE_STAMP "Sun 10 Oct 22:04:54 UTC 2021"
 
 // swap these two to use 'cppcheck --enable=all ./thisfile.cpp'
 #define N_CPPCHECK
@@ -57,8 +57,17 @@ void loop (void) {
     // statements
 }
 
+#ifdef  N_CPPCHECK
+int main (void) {
+    setup ();
+    loop ();
+}
+#endif
+
 //  NOTE AA
 //  func function;
 //  https://github.com/wa1tnr/ainsuForth-gen-exp-m4/blob/master/0-Distribution.d/YAFFA-ARM-master/Dictionary.ino#L1033
 
+// $  cppcheck --enable=all ./n_sketch-tdefptr-aa.cpp
+// Checking n_sketch-tdefptr-aa.cpp ...
 // END.
