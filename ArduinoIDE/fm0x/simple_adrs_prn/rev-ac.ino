@@ -1,4 +1,11 @@
 /* simple_adrs_prn.ino */
+
+// for wokwi Uno simulator:
+
+//    [ https://wokwi.com/arduino/new?template=arduino-uno ]
+
+
+
 // Feather M0 Express - Arduino IDE
 // 09 OCT 2018  22:44 UTC
 
