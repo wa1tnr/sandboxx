@@ -1,7 +1,7 @@
 /* feed_code-aa.ino */
 /* Memory[] SHOWS UP in the ram dump if declared volatile! */
-
-/* 29 Dec 02:22z */
+/*  lcmp */
+/* 29 Dec 02:23z */
 
 // for wokwi Uno simulator:
 
