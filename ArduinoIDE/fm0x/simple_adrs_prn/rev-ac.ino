@@ -6,18 +6,19 @@
 // #define START_ADDRESS 0x200003BA
 
 // internal flashROM address:
-#define START_ADDRESS 0x1d20
+// #define START_ADDRESS 0x1d20
 
+#define START_ADDRESS 0x0
 
 
 // how much output - in units of 16 byte lines:
-#define LINES 8
+#define LINES 32
 
 // p is an integer and is assigned a value that is an address:
 int p = START_ADDRESS;
 
 // generic print buffer to print to the USB serial port:
-char buffer[128];
+// char buffer[128];
 
 // simple putch() as used in the C language:
 void putch(char ch) {
@@ -25,20 +26,16 @@ void putch(char ch) {
 }
 
 
-
-
-
-
-#define lcl_printf() \
-    buf_ptr = * & buffer; \
-    memcpy(buffering, buf_ptr, sizeof buffer); \
-    print_buffer();
-
 char buffering[64];
 
 void print_buffer(void) {
     Serial.print(buffering);
 }
+
+#define lcl_printf() \
+    buf_ptr = * & buffer; \
+    memcpy(buffering, buf_ptr, sizeof buffer); \
+    print_buffer();
 
 void space_it(void) {
       sprintf(buffering, "%c", ' ');
@@ -121,17 +118,29 @@ void testpa(void) {
       lcl_printf();
 }
 
+
 int dump_16_bytes(void) {
-    char *ram;
-    ram = (char *) p; // not used immediately - see Line 43, below
+
+
+      char buffer[48]; // 32 also 64
+      char* buf_ptr;
+
+      buffer[0] = 'a';
+      buffer[1] = 'b';
+      buffer[2] = 'c';
+      buffer[3] = '\000';
+
+      buf_ptr = buffer;
+
+      char *ram;
+      ram = (char *) p; // not used immediately - see Line 43, below
 
 // TEST SITE
-    sprintf(buf_ptr, "\n%4X: ", p); // print an integer 'p' as a formatted string,
+     sprintf(buf_ptr, "\n%4X: ", p); // print an integer 'p' as a formatted string,
                                    // to a string buffer 'buffer'
     lcl_printf();
 
-    Serial.print(buffer); // print the formatted string to the serial port
-
+    Serial.print('x');
     int count = -1;
     for (int i = 0; i < 16; i++) {
         count++;
@@ -151,8 +160,8 @@ int dump_16_bytes(void) {
 //      char c = *ram;        // why are we allowed to use  *ram++  here? What does it do?
 // ----------------------------------------------------------------------------------------
 
-        sprintf(buffer, " %02X", (c & 0xff)); // format c as two hexadecimal digits (in ASCII)
-        Serial.print(buffer);
+        sprintf(buf_ptr, " %02X", (c & 0xff)); // format c as two hexadecimal digits (in ASCII)
+        lcl_printf();
         // Serial.print("DebugFOO"); // random foo to prove where/when this gets executed
     }
     ram = (char *) p; // see Line 27 - does the exact same thing, but in the present context
@@ -165,7 +174,8 @@ int dump_16_bytes(void) {
         if (buffer[0] > 0x7e || buffer[0] < ' ')
             buffer[0] = (uint32_t) '.'; // use a dot for non-printing characters
         buffer[1] = '\0';
-        Serial.print(buffer);
+        buf_ptr = 
+        lcl_printf();
     }
     // increment address in memory by 16:
     return p + 16;
@@ -173,16 +183,14 @@ int dump_16_bytes(void) {
 
 void setup (void) {
     Serial.begin(9600);
-    while (!Serial) { } // await a connection
+//    while (!Serial) { } // await a connection
     delay(2000); // after connect, wait 2 sec
 
     Serial.println("here is.");
 
     testpa();
-    
-    
-    
-    for (int index = LINES; index > 0; index--) { // dump three lines 16 bytes/line
+      
+        for (int index = LINES; index > 0; index--) { // dump three lines 16 bytes/line
         // p has an initial value the first time through this loop
         // p is an address in RAM or ROM
         p = dump_16_bytes();
@@ -193,4 +201,3 @@ void loop (void) {
     while (-1) { }
     Serial.println("Escaped the while()\r\n");
 }
-
