@@ -125,8 +125,10 @@ int dump_16_bytes(void) {
     char *ram;
     ram = (char *) p; // not used immediately - see Line 43, below
 
-    sprintf(buffer, "\n%4X: ", p); // print an integer 'p' as a formatted string,
+// TEST SITE
+    sprintf(buf_ptr, "\n%4X: ", p); // print an integer 'p' as a formatted string,
                                    // to a string buffer 'buffer'
+    lcl_printf();
 
     Serial.print(buffer); // print the formatted string to the serial port
 
