@@ -1,28 +1,24 @@
-/* simple_adrs_prn.ino */
+/* feed_code-aa.ino */
 
-/* 29 Dec 01:29z */
+/* 29 Dec 02:04z */
 
 // for wokwi Uno simulator:
 
 //    [ https://wokwi.com/arduino/new?template=arduino-uno ]
 
-
-
-
-// Feather M0 Express - Arduino IDE
-// 09 OCT 2018  22:44 UTC
-
+/* ************************    ADDRESSES    *********************** */
 // ram address:
 // #define START_ADDRESS 0x200003BA
 
 // internal flashROM address:
 // #define START_ADDRESS 0x1d20
 
-#define START_ADDRESS 0x0
+#define START_ADDRESS 0xF7FF+1+800+400+400+400
 
+// #define START_ADDRESS 0x0
 
 // how much output - in units of 16 byte lines:
-#define LINES 32
+#define LINES 0x1000
 
 // p is an integer and is assigned a value that is an address:
 int p = START_ADDRESS;
@@ -31,25 +27,48 @@ int p = START_ADDRESS;
 // char buffer[128];
 
 
-const uint8_t Memory[] = { 0xfe, 0xed, 0xc0, 0xde,
-0xca, 0xde, 0xce, 0xde }
+// don't know how to declare this to find it in the memory dump ;)
+// 01:55 UTC
+
+uint8_t Memory[] = { 
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+    0xfe, 0xed, 0xc0, 0xde, 0xca, 0xde, 0xce, 0xde,
+  
+  };
+
+/* ********************    C PREPROCESSOR MACRO    ********************** */
+#define lcl_printf() \
+    buf_ptr = * & buffer; \
+    memcpy(buffering, buf_ptr, sizeof buffer); \
+    print_buffer();
 
 // simple putch() as used in the C language:
 void putch(char ch) {
     Serial.print(ch);
 }
 
-
 char buffering[64];
 
 void print_buffer(void) {
     Serial.print(buffering);
 }
-
-#define lcl_printf() \
-    buf_ptr = * & buffer; \
-    memcpy(buffering, buf_ptr, sizeof buffer); \
-    print_buffer();
 
 void space_it(void) {
       sprintf(buffering, "%c", ' ');
@@ -82,7 +101,7 @@ void testpa(void) {
 
       int buf_len = strlen(buffer);
 
-      size_t gottem;
+      // size_t gottem;
 
       sprintf(buffering, "%c", '\'');
       print_buffer();
@@ -130,31 +149,30 @@ void testpa(void) {
 
       sprintf(buf_ptr, "%c%.11u\n\n", ' ', adrs);
       lcl_printf();
+      sprintf(buf_ptr, "%X", Memory[0x7]);
+      lcl_printf();
 }
 
-
+/* **************************    DUMP    ************************* */
 int dump_16_bytes(void) {
+    char buffer[48]; // 32 also 64
+    char* buf_ptr;
+    buffer[0] = 'a';
+    buffer[1] = 'b';
+    buffer[2] = 'c';
+    buffer[3] = '\000';
 
+    buf_ptr = buffer;
 
-      char buffer[48]; // 32 also 64
-      char* buf_ptr;
+    char *ram;
+    ram = (char *) p; // not used immediately - see Line 43, below
 
-      buffer[0] = 'a';
-      buffer[1] = 'b';
-      buffer[2] = 'c';
-      buffer[3] = '\000';
-
-      buf_ptr = buffer;
-
-      char *ram;
-      ram = (char *) p; // not used immediately - see Line 43, below
-
-// TEST SITE
-     sprintf(buf_ptr, "\n%4X: ", p); // print an integer 'p' as a formatted string,
+    sprintf(buf_ptr, "\n%4X: ", p); // print an integer 'p' as a formatted string,
                                    // to a string buffer 'buffer'
     lcl_printf();
 
-    Serial.print('x');
+    // Serial.print('x'); // was annoying
+    Serial.print(' ');
     int count = -1;
     for (int i = 0; i < 16; i++) {
         count++;
@@ -197,12 +215,12 @@ int dump_16_bytes(void) {
 
 void setup (void) {
     Serial.begin(9600);
-//    while (!Serial) { } // await a connection
+//  while (!Serial) { } // await a connection
     delay(2000); // after connect, wait 2 sec
-
     Serial.println("here is.");
 
     testpa();
+    delay(6000);
       
         for (int index = LINES; index > 0; index--) { // dump three lines 16 bytes/line
         // p has an initial value the first time through this loop
@@ -215,3 +233,5 @@ void loop (void) {
     while (-1) { }
     Serial.println("Escaped the while()\r\n");
 }
+
+// END.
