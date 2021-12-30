@@ -1,5 +1,5 @@
 /* feed_code-bb.ino */
-/* Wednesday 29 Dec 04:32z */
+/* Thursday 30 Dec 00:26z */
 
 /*  pvwi */
 
@@ -48,6 +48,14 @@ void burgers() {
 
     // volatile static in seems to have it all.
     // low in the memory map too.
+
+
+    // play with different volatile static int widths
+    // such as uint16_t here.  Watch the memory map
+    // usage change in response.
+
+    // Reduce the dataset (just below) for all but
+    // 8-bit-wide datatypes:
 
     volatile static uint8_t Memory[] = {
 
