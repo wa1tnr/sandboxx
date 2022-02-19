@@ -1,4 +1,6 @@
 // TESTED EDIT  19 Feb 2022  14:44 UTC
+// https://github.com/wa1tnr/sandboxx/tree/main/ArduinoIDE/lcd-i2c-aa
+
 #include <Arduino.h>
 #include "LiquidCrystal_I2C.h"
 
