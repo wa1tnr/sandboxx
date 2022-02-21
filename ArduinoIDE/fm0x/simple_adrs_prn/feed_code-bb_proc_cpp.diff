@@ -1,0 +1,257 @@
+1,36c1
+< /* feed_code-bb.ino */
+< /* Thursday 30 Dec 00:26z */
+< 
+< /*  pvwi */
+< 
+< // for wokwi Uno simulator:
+< 
+< //    [ https://wokwi.com/arduino/new?template=arduino-uno ]
+< 
+< /* volatile static int - hard to miss it in a dump */
+< 
+< /* ************************    ADDRESSES    *********************** */
+< // ram address:
+< // #define START_ADDRESS 0x200003BA
+< 
+< // internal flashROM address:
+< // #define START_ADDRESS 0x1d20
+< 
+< #define START_ADDRESS 0xF7FF+1+800+400+400+400
+< 
+< // #define START_ADDRESS 0x0
+< 
+< // how much output - in units of 16 byte lines:
+< #define LINES 0x40
+< 
+< // p is an integer and is assigned a value that is an address:
+< int p = START_ADDRESS;
+< 
+< 
+< 
+< /* ********************    C PREPROCESSOR MACRO    ********************** */
+< #define lcl_printf() \
+<     buf_ptr = * & buffer; \
+<     memcpy(buffering, buf_ptr, sizeof buffer); \
+<     print_buffer();
+< 
+---
+> int p = 0xF7FF+1+800+400+400+400;
+42c7
+<   
+---
+> 
+47,59d11
+<     // static int isn't apparent at all.
+< 
+<     // volatile static in seems to have it all.
+<     // low in the memory map too.
+< 
+< 
+<     // play with different volatile static int widths
+<     // such as uint16_t here.  Watch the memory map
+<     // usage change in response.
+< 
+<     // Reduce the dataset (just below) for all but
+<     // 8-bit-wide datatypes:
+< 
+121,124c73,76
+<     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+<     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+<     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+<     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+---
+>     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+>     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+131d82
+<     /* msg */
+134,137d84
+<     /* msg */
+< 
+<     0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 
+<     0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 
+138a86,87
+>     0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
+>     0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
+141,142d89
+<     // sprintf(buf_ptr, "%X", Memory[16]);
+<     // lcl_printf();
+145d91
+< // simple putch() as used in the C language:
+150d95
+< 
+168,169c113,114
+<       
+<       char buffer[48]; // 32 also 64
+---
+> 
+>       char buffer[48];
+181c126
+<       buf_size = sizeof(buffer); // captures "abc\000" size
+---
+>       buf_size = sizeof(buffer);
+186,187d130
+<       // size_t gottem;
+< 
+202c145
+<       lcl_printf();
+---
+>       buf_ptr = * & buffer; memcpy(buffering, buf_ptr, sizeof buffer); print_buffer();;
+206c149
+<       lcl_printf();
+---
+>       buf_ptr = * & buffer; memcpy(buffering, buf_ptr, sizeof buffer); print_buffer();;
+208c151
+<       buf_size = sizeof(buffer); // captures "abc\000" size
+---
+>       buf_size = sizeof(buffer);
+210,211c153,154
+<       sprintf(buf_ptr, "%d\n", buf_size); // related to string length, possibly
+<       lcl_printf();
+---
+>       sprintf(buf_ptr, "%d\n", buf_size);
+>       buf_ptr = * & buffer; memcpy(buffering, buf_ptr, sizeof buffer); print_buffer();;
+214c157
+<       lcl_printf();
+---
+>       buf_ptr = * & buffer; memcpy(buffering, buf_ptr, sizeof buffer); print_buffer();;
+216,217c159,160
+<       sprintf(buf_ptr, " %d\n", buf_len); // related to string length, possibly
+<       lcl_printf();
+---
+>       sprintf(buf_ptr, " %d\n", buf_len);
+>       buf_ptr = * & buffer; memcpy(buffering, buf_ptr, sizeof buffer); print_buffer();;
+223c166
+<       lcl_printf();
+---
+>       buf_ptr = * & buffer; memcpy(buffering, buf_ptr, sizeof buffer); print_buffer();;
+225d167
+<       // print the buffer's address in ram
+227c169
+<       lcl_printf();
+---
+>       buf_ptr = * & buffer; memcpy(buffering, buf_ptr, sizeof buffer); print_buffer();;
+230c172
+<       lcl_printf();
+---
+>       buf_ptr = * & buffer; memcpy(buffering, buf_ptr, sizeof buffer); print_buffer();;
+233c175
+<       lcl_printf();
+---
+>       buf_ptr = * & buffer; memcpy(buffering, buf_ptr, sizeof buffer); print_buffer();;
+244c186
+< #define TIME_OUT 21334
+---
+> 
+246c188
+<   for (volatile int timeout = TIME_OUT; timeout >0; timeout--)
+---
+>   for (volatile int timeout = 21334; timeout >0; timeout--)
+250,251d191
+< 
+< 
+257c197
+<     { time_out(); }  
+---
+>     { time_out(); }
+260,262d199
+< 
+< 
+< /* **************************    DUMP    ************************* */
+264c201
+<     char buffer[48]; // 32 also 64
+---
+>     char buffer[48];
+274c211,213
+<     ram = (char *) p; // not used immediately - see Line 43, below
+---
+>     ram = (char *) p;
+> 
+>     sprintf(buf_ptr, "\n%4X: ", p);
+276,278c215
+<     sprintf(buf_ptr, "\n%4X: ", p); // print an integer 'p' as a formatted string,
+<                                    // to a string buffer 'buffer'
+<     lcl_printf();
+---
+>     buf_ptr = * & buffer; memcpy(buffering, buf_ptr, sizeof buffer); print_buffer();;
+280d216
+<     // Serial.print('x'); // was annoying
+286c222
+<             putch('\040'); // extra padding after eighth byte is printed
+---
+>             putch('\040');
+288,289c224,225
+<             count = (count & 0x03); // pad every four bytes ..
+<             putch('\040');          // with a space char, 0x20 (octal: \040)
+---
+>             count = (count & 0x03);
+>             putch('\040');
+291c227
+<         char c = *ram++;      // c now holds the character stored at address p
+---
+>         char c = *ram++;
+293,303c229,230
+<                               // see Line 27, above, for initial value of *ram
+< 
+< // ----------------------------------------------------------------------------------------
+< // Exercise   - modify  *ram  so that it does not increment:
+< //
+< //      char c = *ram;        // why are we allowed to use  *ram++  here? What does it do?
+< // ----------------------------------------------------------------------------------------
+< 
+<         sprintf(buf_ptr, " %02X", (c & 0xff)); // format c as two hexadecimal digits (in ASCII)
+<         lcl_printf();
+<         // Serial.print("DebugFOO"); // random foo to prove where/when this gets executed
+---
+>         sprintf(buf_ptr, " %02X", (c & 0xff));
+>         buf_ptr = * & buffer; memcpy(buffering, buf_ptr, sizeof buffer); print_buffer();;
+305c232
+<     ram = (char *) p; // see Line 27 - does the exact same thing, but in the present context
+---
+>     ram = (char *) p;
+307c234
+<     putch('\040'); putch('\040'); putch('\040'); // three spaces
+---
+>     putch('\040'); putch('\040'); putch('\040');
+309d235
+<     // print out the ASCII equivalents, in the rightmost 16 columns:
+313c239
+<             buffer[0] = (uint32_t) '.'; // use a dot for non-printing characters
+---
+>             buffer[0] = (uint32_t) '.';
+315,316c241,242
+<         buf_ptr = 
+<         lcl_printf();
+---
+>         buf_ptr =
+>         buf_ptr = * & buffer; memcpy(buffering, buf_ptr, sizeof buffer); print_buffer();;
+318d243
+<     // increment address in memory by 16:
+322d246
+< 
+326,327c250,251
+< //  while (!Serial) { } // await a connection
+<     delay(2000); // after connect, wait 2 sec
+---
+> 
+>     delay(2000);
+332,336c256,258
+<     delay(6000);      
+<         for (int index = LINES; index > 0; index--) { // dump three lines 16 bytes/line
+<         // p has an initial value the first time through this loop
+<         // p is an address in RAM or ROM
+<         p = dump_16_bytes();
+---
+>     delay(6000);
+>         for (int index = 0x40; index > 0; index--) {
+>             p = dump_16_bytes();
+341c263
+<     digitalWrite(LED_BUILTIN, 0); // determinate
+---
+>     digitalWrite(LED_BUILTIN, 0);
+345,347d266
+< 
+< /* 29 Dec 03:59z BINGO */
+< // END.

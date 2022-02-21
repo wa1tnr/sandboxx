@@ -1,0 +1,4 @@
+/some/path/to/.arduino15/packages/adafruit/tools/arm-none-eabi-gcc/9-2019q4/bin/arm-none-eabi-cpp
+
+chosen to match target MCU SAMD21 Adafruit Feather M0 Express which
+matches what the Arduino IDE compiler chain would be and do. ;)
