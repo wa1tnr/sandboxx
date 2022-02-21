@@ -1,13 +1,15 @@
 {
   "version": 1,
-  "author": "wa1tnr  19 Feb 2022  15:06:03 UTC",
+  "author": "wa1tnr  21 Feb 2022  12:38:27 UTC",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-arduino-uno", "id": "uno", "top": 170, "left": 22, "attrs": {} },
-    { "type": "wokwi-lcd1602", "id": "lcd1", "top": 10, "left": 10, "attrs": { "pins": "i2c" } }
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 200, "left": 22, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": 0, "left": 20, "attrs": { "pins": "i2c" } }
   ],
   "connections": [
-    [ "uno:A4", "lcd1:SDA", "orange", [ "v40", "h-290", "v0" ] ],
-    [ "uno:A5", "lcd1:SCL", "yellow", [ "v60", "h-320", "v0" ] ]
+    [ "uno:A4", "lcd1:SDA", "orange", [ "v60", "h90", "v-290", "h-380", "v0" ] ],
+    [ "uno:A5", "lcd1:SCL", "yellow", [ "v40", "h60", "v-250", "h-380", "v0" ] ],
+    [ "uno:5V", "lcd1:VCC", "red", [ "v40", "h-270", "v0" ] ],
+    [ "uno:GND.2", "lcd1:GND", "black", [ "v60", "h-300", "v0" ] ]
   ]
 }
